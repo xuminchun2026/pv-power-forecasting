@@ -43,7 +43,7 @@
 > DOI: 10.1016/j.solener.2021.09.050
 
 > 数据集：PVOD v1.0（V4）, Science Data Bank, DOI: 10.11922/sciencedb.01094
-> 仓库：<https://github.com/xuminchun2026/pv-power-forecasting>（MIT 协议）
+> 仓库：<https://github.com/yaotc/PVODataset>（MIT 协议）
 
 > ⚠️ **一处需要说明的出入**：任务参考资料里把该数据集论文标注为「Energy and AI, 2023」，
 > 但数据集官方仓库 README 的 Citation 小节给出的正式出处是 **Solar Energy, 2021, 230: 122-130**。
@@ -390,7 +390,7 @@ python code/25_three_learner_plot.py # 三 learner 收益对照（出 fig19_thre
 点 PyCharm 底部 **Terminal**（或菜单 View → Tool Windows → Terminal），三条命令：
 
 ```bash
-git remote add origin https://github.com/xuminchun2026/pv-power-forecasting
+git remote add origin https://github.com/你的用户名/pv-power-forecasting.git
 git branch -M main
 git push -u origin main
 ```
@@ -430,9 +430,10 @@ git push
 | **报告正文（LaTeX）** | `overleaf/main.tex` | 引擎 **XeLaTeX**，含 18 张插图、12 张表 |
 | Overleaf 上传包 | `overleaf_upload.zip` | 含 `main.tex`、`refs.bib`、`figures/` 18 张图 |
 | 结果汇总 | `results.md` | 指标表 + 两个研究问题的回答，题目要求的 `results.md` |
-| 可复现代码 | `code/06` ~ `code/21` + `pvod_common.py` | 每个脚本可独立运行 |
+| 可复现代码 | `code/06` ~ `code/25` + `pvod_common.py` | 每个脚本可独立运行 |
+| 早期探索脚本 | `code/01` ~ `code/05` | 用另一份候选数据集做的探索，**已弃用**，正式结果不由它们产出 |
 | 结果数据 | `results/pvod_*.csv`、`transfer_loso_*.csv`、`lstm_*.csv` | 报告里每一个数字都来自这里，没有手填 |
-| 报告用图 | `figures/fig1` ~ `fig16` | 均由脚本自动生成 |
+| 报告用图 | `figures/fig1` ~ `fig19` | 均由脚本自动生成 |
 
 > ⚠️ `data/`（含 271968 行原始数据）**不进版本库**，也不随 GitHub 分发；
 > 复现者按第 3 节 DOI 自行下载。
@@ -442,12 +443,12 @@ git push
 | 基础要求（7 条） | 完成 |
 |---|---|
 | 读取数据 + 基本检查（数据量/缺失/时间范围/夜间零功率） | ✅ 见 10_pvod_load_check.py，另发现时区、断点、平顶三类问题 |
-| 至少 3–4 张图 + 文字解读 | ✅ 正文 18 张图，每张均有解读 |
+| 至少 3–4 张图 + 文字解读 | ✅ 正文 19 张图（另有 1 张备用图未引用），每张均有解读 |
 | 明确的研究问题 | ✅ 见第 2 节 |
 | 朴素基线 + ≥1 个机器学习模型 | ✅ 四个设定、七种方法、两类朴素基线 |
 | 报告 MAE 与 RMSE 并比较 | ✅ 见 5.1 |
 | 书面报告（引言/数据/方法/结果/结论） | ✅ |
-| 真实引用 ≥2 篇 | ✅ 9 条（正文全部引用），PVOD 数据集引用已从官方仓库核实 |
+| 真实引用 ≥2 篇 | ✅ 11 条（正文全部引用），PVOD 数据集引用已从官方仓库核实 |
 
 | 拓展项（6 条） | 完成 |
 |---|---|
@@ -458,8 +459,8 @@ git push
 | ⑤ 可解释性 / 特征重要性 | ✅ 5.4 |
 | ⑥ 能源应用讨论 | ✅ 报告结论部分「工程应用含义」一段 |
 
-**截至 2026-10-03 的待办**
+**编译说明**
 
-1. 在 Overleaf 上用 **XeLaTeX** 实际编译一次，确认无报错（本机无 LaTeX 引擎，只做了静态检查）。
-2. 把报告正文改成自己的话，答辩时语感才像自己的。
-3. 图 4（相关系数热力图）若想换成立创 EDA 风格可另做，当前为 matplotlib 绘制。
+报告 LaTeX 源码在 `overleaf/`，已在本机用 XeLaTeX 引擎实际编译通过（无报错，29 页）；
+若要在 Overleaf 上再编译一次：上传 `overleaf/main.tex` + `refs.bib` + `figures/`，
+并把编译器改成 **XeLaTeX**（默认是 LaTeX，编中文会报字体错）。
