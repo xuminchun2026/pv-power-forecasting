@@ -346,5 +346,5 @@ DOI: 10.1016/j.solener.2021.09.050
 
 > ⚠️ 说明：任务参考资料中标注的出处为「Energy and AI, 2023」，但经查数据集官方仓库
 > （github.com/yaotc/PVODataset）的 Citation 小节，正式出处为上列 Solar Energy 2021 一文。
-> 本文以数据提供方的官方引用为准。全部 9 条文献的 DOI 均已用 CrossRef / DataCite 逐条核验，
+> 本文以数据提供方的官方引用为准。报告中引用的全部 11 条文献，DOI 均已用 CrossRef / DataCite 逐条核验，
 > 其中 Breiman《Random Forests》原写 DOI 经 doi.org 验证为 404，已更正为 10.1023/A:1010933404324。
