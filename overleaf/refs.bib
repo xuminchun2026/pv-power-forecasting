@@ -1,0 +1,144 @@
+% 参考文献（BibTeX）
+% ⚠️ 学术诚信：DOI 请自己在出版商页面再核对一遍，不要直接照抄。
+% ------------------------------------------------------------
+
+% 本项目使用的实测数据集（必须引用！这是数据的真实出处）
+% 来源：Science Data Bank 数据集页面 https://www.scidb.cn/detail?dataSetId=1368e43f8e444f779c3e9d36ac5d3c84
+% 注：页面署名显示为 Rambo；平台可一键导出该条 BibTeX，若与此处不一致以平台导出为准
+@dataset{ningxia2019photovoltaic,
+  author       = {Rambo},
+  title        = {Ningxia 2019 Photovoltaic Power Generation Dataset},
+  version      = {V1},
+  publisher    = {Science Data Bank},
+  year         = {2025},
+  doi          = {10.57760/sciencedb.25490},
+  url          = {https://doi.org/10.57760/sciencedb.25490},
+  note         = {15分钟粒度，2019年全年，宁夏光伏电站}
+}
+
+% 领域综述：光伏功率预测方法总览（推荐作为背景文献）
+@article{antonanzas2016review,
+  author  = {Antonanzas, J. and Osorio, N. and Escobar, R. and Urraca, R. and
+             Martinez-de-Pison, F. J. and Antonanzas-Torres, F.},
+  title   = {Review of photovoltaic power forecasting},
+  journal = {Solar Energy},
+  volume  = {136},
+  pages   = {78--111},
+  year    = {2016},
+  doi     = {10.1016/j.solener.2016.06.069}
+}
+
+% 随机森林用于光伏超短期预测（推荐作为方法文献）
+@article{yang2021improved,
+  author  = {Yang, M. and Zhao, M. and Liu, D. and Ma, M. and Su, X.},
+  title   = {Improved Random Forest Method for Ultra-short-term Prediction
+             of the Output Power of a Photovoltaic Cluster},
+  journal = {Frontiers in Energy Research},
+  volume  = {9},
+  pages   = {749367},
+  year    = {2021},
+  doi     = {10.3389/fenrg.2021.749367}
+}
+
+% 光伏/太阳能预测方法总览（备选综述）
+@article{inman2013solar,
+  author  = {Inman, R. H. and Pedro, H. T. C. and Coimbra, C. F. M.},
+  title   = {Solar forecasting methods for renewable energy integration},
+  journal = {Progress in Energy and Combustion Science},
+  volume  = {39},
+  number  = {6},
+  pages   = {535--576},
+  year    = {2013},
+  doi     = {10.1016/j.pecs.2013.06.002}
+}
+
+% 光伏发电预测方法综述（第三种口径，可互补）
+@article{sobroi2018review,
+  author  = {Sobri, S. and Koohi-Kamali, S. and Rahim, N. A.},
+  title   = {Solar photovoltaic generation forecasting methods: a review},
+  journal = {Energy Conversion and Management},
+  volume  = {156},
+  pages   = {459--497},
+  year    = {2018},
+  doi     = {10.1016/j.enconman.2017.11.019}
+}
+
+% 机器学习方法横向对比（支撑你的 RF vs GBDT 设计）
+@article{markovics2022comparison,
+  author  = {Markovics, D. and Mayer, M. J.},
+  title   = {Comparison of machine learning methods for photovoltaic power
+             forecasting based on numerical weather prediction},
+  journal = {Renewable and Sustainable Energy Reviews},
+  volume  = {161},
+  pages   = {112364},
+  year    = {2022},
+  doi     = {10.1016/j.rser.2022.112364}
+}
+
+% ------------------------------------------------------------
+% PVOD 河北十站数据集 —— 引用信息已于 2026-10-03 从官方仓库自行核对
+% 来源：https://github.com/yaotc/PVODataset 的 README「Citation」小节
+% ⚠️ 注意：题目参考资料里写的是「Energy and AI, 2023」，
+%    但官方仓库给出的正式出处是 Solar Energy, 2021, 230: 122-130，
+%    本文以数据提供方的官方引用为准。
+% ------------------------------------------------------------
+
+% 数据集配套论文（引用数据集时应引这一篇）
+@article{yao2021photovoltaic,
+  author  = {Yao, Tiechui and Wang, Jue and Wu, Haoyan and Zhang, Pei and
+             Li, Shigang and Wang, Yangang and Chi, Xuebin and Shi, Min},
+  title   = {A photovoltaic power output dataset: Multi-source photovoltaic
+             power output dataset with Python toolkit},
+  journal = {Solar Energy},
+  volume  = {230},
+  pages   = {122--130},
+  year    = {2021},
+  issn    = {0038-092X},
+  doi     = {10.1016/j.solener.2021.09.050}
+}
+
+% 数据集本身（Science Data Bank 上的 DOI）
+@dataset{pvod,
+  author    = {Yao, Tiechui and Wang, Jue and Wu, Haoyan and Zhang, Pei and
+               Li, Shigang and Wang, Yangang and Chi, Xuebin and Shi, Min},
+  title     = {PVOD v1.0: A photovoltaic power output dataset},
+  version   = {V4},
+  publisher = {Science Data Bank},
+  year      = {2021},
+  doi       = {10.11922/sciencedb.01094},
+  url       = {http://www.doi.org/10.11922/sciencedb.01094},
+  note      = {河北十座光伏电站，15 分钟粒度，271968 条记录，MIT 协议}
+}
+% ------------------------------------------------------------
+
+% 随机森林原始论文（想让老师看到你懂模型本身时引）
+% ⚠️ 修正记录（2026-10-03）：原写 doi = 10.1007/s10994-001-0310-7，
+%    经 doi.org 验证返回 404，该 DOI 不存在；CrossRef 按标题检索得到的正确 DOI 为
+%    10.1023/A:1010933404324（Springer 早期通过 Kluwer 分配的 DOI），已更正。
+@article{breiman2001random,
+  author  = {Breiman, L.},
+  title   = {Random Forests},
+  journal = {Machine Learning},
+  volume  = {45},
+  number  = {1},
+  pages   = {5--32},
+  year    = {2001},
+  doi     = {10.1023/A:1010933404324}
+}
+% ------------------------------------------------------------
+% 本文「误差分方向统计」用到的两项河北电价依据（2026-10-03 新增）
+% 背景：136 号文之后新能源全面入市，预测偏差最终要落到上网电价与现货价格上。
+% ------------------------------------------------------------
+@misc{hebei_pricing,
+  author  = {河北省发展和改革委员会},
+  title   = {河北南网深化新能源上网电价市场化改革实施方案},
+  year    = {2025},
+  note    = {存量项目机制电价按河北南网现行燃煤发电基准价 0.3644 元/千瓦时执行；冀北电网为 0.372 元/千瓦时}
+}
+
+@misc{hebei_spot,
+  author  = {河北省发展和改革委员会},
+  title   = {河北南部电网电力现货市场连续结算试运行工作方案（2025 年）},
+  year    = {2025},
+  note    = {2025-03-01 起连续结算试运行，电能量申报与出清限价均为 0~1200 元/兆瓦时}
+}

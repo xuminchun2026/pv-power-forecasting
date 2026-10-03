@@ -1,0 +1,35 @@
+<Slide style={{ padding: '0px' }}>
+  <Box style={{ width: '100%', height: 10, background: '#0E3F8C' }} />
+  <Box style={{ padding: '30px 40px 0px 40px' }}>
+    <Text style={{ fontSize: 36, fontWeight: 'bold', color: '#1E4FA8' }}>五、我知道自己差在哪，也知道下一步补什么</Text>
+  </Box>
+  <Box style={{ padding: '20px 40px 0px 40px' }}>
+    <Box style={{ flexDirection: 'row', gap: 14, height: 240 }}>
+      <Box style={{ flex: 1, flexDirection: 'column', background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '18px 18px', gap: 6 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1A2230' }}>不足一：只跑了河北一年</Text>
+        <Text style={{ fontSize: 19, color: '#4A5568', lineHeight: 1.55 }}>题目给的另一份公开数据（Kaggle 印度三站）还没用上。同一套流程换到别的气候区还能不能站住，下一步照原样复跑一遍。</Text>
+      </Box>
+      <Box style={{ flex: 1, flexDirection: 'column', background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '18px 18px', gap: 6 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1A2230' }}>不足二：只用了单一结构</Text>
+        <Text style={{ fontSize: 19, color: '#4A5568', lineHeight: 1.55 }}>LSTM 只试了一组隐层结构和固定轮数，只能用来比相对次序，不宜当精度上限。树模型也没做网格搜索。</Text>
+      </Box>
+      <Box style={{ flex: 1, flexDirection: 'column', background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '18px 18px', gap: 6 }}>
+        <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#1A2230' }}>不足三：两个站点的异常没处理</Text>
+        <Text style={{ fontSize: 19, color: '#4A5568', lineHeight: 1.55 }}>station04 归一化峰值 1.338（超登记容量 33.8%），station09 只有 0.602（疑似限发）。下一步：剔除后重跑做敏感性分析。</Text>
+      </Box>
+    </Box>
+    <Box style={{ marginTop: 16, flexDirection: 'row', gap: 18, height: 172 }}>
+      <Box style={{ flex: 1, background: '#E8EFF8', borderRadius: 8, padding: '16px 20px', flexDirection: 'column', gap: 4 }}>
+        <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0E3F8C' }}>这一步让我真正确认的事</Text>
+        <Text style={{ fontSize: 19, color: '#1A2230', lineHeight: 1.5 }}>把公开数据从头跑通、把三处数据坑自己找出来、把「模型一定更好」这个想当然推翻了；「MAE 对称、工程成本不对称」这个短板，我也用真实电价把它量化对账了 —— 这才是我这次最大的收获。</Text>
+      </Box>
+      <Box style={{ flex: 1, background: '#F0F5FC', borderRadius: 8, padding: '16px 20px', flexDirection: 'column', gap: 4 }}>
+        <Text style={{ fontSize: 21, fontWeight: 'bold', color: '#0E3F8C' }}>请老师和学长学姐指正</Text>
+        <Text style={{ fontSize: 19, color: '#4A5568', lineHeight: 1.5 }}>代码、数据说明、结果 CSV 和报告都在材料包里，可以逐条复核。谢谢！</Text>
+      </Box>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', right: 40, bottom: 24 }}>
+    <Text style={{ fontSize: 16, color: '#1E4FA8' }}>13 / 13</Text>
+  </Box>
+</Slide>

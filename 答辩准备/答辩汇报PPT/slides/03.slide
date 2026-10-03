@@ -1,0 +1,42 @@
+<Slide style={{ padding: '0px' }}>
+  <Box style={{ width: '100%', height: 10, background: '#0E3F8C' }} />
+  <Box style={{ padding: '30px 40px 0px 40px' }}>
+    <Text style={{ fontSize: 36, fontWeight: 'bold', color: '#1E4FA8' }}>一、我为什么先问"手里有什么"，而不是先比模型</Text>
+  </Box>
+  <Box style={{ padding: '20px 40px 0px 40px' }}>
+    <Box style={{ flexDirection: 'row', gap: 22, height: 344 }}>
+      <Box style={{ flex: 1, flexDirection: 'column', background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '22px 24px', gap: 14 }}>
+        <Box style={{ width: '100%', height: 40, background: '#1E4FA8', borderRadius: 4, alignItems: 'center', paddingLeft: 14 }}>
+          <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF' }}>研究问题一</Text>
+        </Box>
+        <Text style={{ fontSize: 22, color: '#1A2230', lineHeight: 1.55 }}>复杂模型（LSTM 这类）是不是一定比简单模型好？</Text>
+        <Text style={{ fontSize: 22, color: '#4A5568', lineHeight: 1.55 }}>我用一个只有一层映射的任务去拷问它：如果"上一刻的功率就是这一刻的功率"，谁学得最像。</Text>
+        <Box style={{ marginTop: 'auto', flexDirection: 'row', gap: 12 }}>
+          <Box style={{ background: '#E8EFF8', borderRadius: 14, padding: '6px 16px' }}>
+            <Text style={{ fontSize: 19, color: '#1E4FA8' }}>用恒等映射检验</Text>
+          </Box>
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, flexDirection: 'column', background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '22px 24px', gap: 14 }}>
+        <Box style={{ width: '100%', height: 40, background: '#1E4FA8', borderRadius: 4, alignItems: 'center', paddingLeft: 14 }}>
+          <Text style={{ fontSize: 24, fontWeight: 'bold', color: '#FFFFFF' }}>研究问题二</Text>
+        </Box>
+        <Text style={{ fontSize: 22, color: '#1A2230', lineHeight: 1.55 }}>多站数据该怎么用才有用？</Text>
+        <Text style={{ fontSize: 22, color: '#4A5568', lineHeight: 1.55 }}>新建电站没数据的时候，是拿别站训好的模型直接用，还是把别站数据合进来一起训？</Text>
+        <Box style={{ marginTop: 'auto', flexDirection: 'row', gap: 12 }}>
+          <Box style={{ background: '#E8EFF8', borderRadius: 14, padding: '6px 16px' }}>
+            <Text style={{ fontSize: 19, color: '#1E4FA8' }}>留一站交叉验证</Text>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+    <Box style={{ marginTop: 22, width: '100%', height: 88, background: '#0E3F8C', borderRadius: 6, padding: '14px 24px', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 23, color: '#FFFFFF', lineHeight: 1.5 }}>
+        <span style={{ color: '#FFC107', fontWeight: 'bold' }}>共同前提</span>：先分清同时刻实测气象、同时刻预报气象、只有历史观测这三种场景 —— 因为工程上能拿到的数据根本不一样。
+      </Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', right: 40, bottom: 24 }}>
+    <Text style={{ fontSize: 16, color: '#1E4FA8' }}>03 / 13</Text>
+  </Box>
+</Slide>

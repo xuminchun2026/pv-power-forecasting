@@ -1,0 +1,34 @@
+<Slide style={{ padding: '0px', background: '#FFFFFF' }}>
+  <Box style={{ width: '100%', height: 156, background: '#0E3F8C' }} />
+  <Box style={{ position: 'absolute', top: 156, left: 0, width: 6, height: 300, background: '#1E4FA8' }} />
+  <Box style={{ position: 'absolute', top: 250, left: 80, width: 1120, flexDirection: 'column', gap: 18 }}>
+    <Text style={{ fontSize: 44, fontWeight: 'bold', color: '#1A2230', letterSpacing: 2 }}>
+      <span style={{ color: '#1E4FA8' }}>光伏功率预测</span>：多站对比与信息可得性分析
+    </Text>
+    <Text style={{ fontSize: 24, color: '#4A5568' }}>
+      基于 PVOD 河北十站数据的机器学习方法对照实验
+    </Text>
+    <Text style={{ fontSize: 22, color: '#8B97A8' }}>
+      西华大学电气与电子信息学院 · 自动化专业 · 2026 年电气 Club 论文组招新答辩
+    </Text>
+  </Box>
+  <Box style={{ position: 'absolute', top: 560, left: 80, width: 1120, height: 1, background: '#D6DCE5' }} />
+  <Box style={{ position: 'absolute', top: 592, left: 80, flexDirection: 'row', gap: 64 }}>
+    <Box style={{ flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1A2230' }}>汇报人</Text>
+      <Text style={{ fontSize: 22, color: '#4A5568' }}>徐敏纯</Text>
+    </Box>
+    <Box style={{ flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1A2230' }}>学号</Text>
+      <Text style={{ fontSize: 22, color: '#4A5568' }}>3120260807425</Text>
+    </Box>
+    <Box style={{ flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1A2230' }}>方向</Text>
+      <Text style={{ fontSize: 22, color: '#4A5568' }}>方向 A　AI × 电力</Text>
+    </Box>
+    <Box style={{ flexDirection: 'column', gap: 6 }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#1A2230' }}>答辩日期</Text>
+      <Text style={{ fontSize: 22, color: '#4A5568' }}>2026 年 10 月 14 日</Text>
+    </Box>
+  </Box>
+</Slide>

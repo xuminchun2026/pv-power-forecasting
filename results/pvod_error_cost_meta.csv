@@ -1,0 +1,7 @@
+﻿,值
+total_mw,193.6
+avg_station_mw,19.36
+test_hours,2035.3
+test_days,84.8
+annual_factor,4.3
+prices,"{'少报(弃光)基准': 0.3433, '多报(缺额)基准': 0.3644, '多报(现货上限)': 1.2}"

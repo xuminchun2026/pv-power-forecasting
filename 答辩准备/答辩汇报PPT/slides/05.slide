@@ -1,0 +1,60 @@
+<Slide style={{ padding: '0px' }}>
+  <Box style={{ width: '100%', height: 10, background: '#0E3F8C' }} />
+  <Box style={{ padding: '30px 40px 0px 40px' }}>
+    <Text style={{ fontSize: 36, fontWeight: 'bold', color: '#1E4FA8' }}>三处会毁掉结论的数据坑（都是我自己踩出来又爬出来的）</Text>
+  </Box>
+  <Box style={{ padding: '20px 40px 0px 40px' }}>
+    <Box style={{ flexDirection: 'row', gap: 18, height: 352 }}>
+      <Box style={{ flex: 1, flexDirection: 'column', background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '20px 20px 16px 20px', gap: 10 }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Box style={{ width: 34, height: 34, background: '#D9534F', borderRadius: 4, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>1</Text>
+          </Box>
+          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#1A2230' }}>时间戳是 UTC，不是北京时间</Text>
+        </Box>
+        <Text style={{ fontSize: 20, color: '#4A5568', lineHeight: 1.5 }}>按原始时钟统计，辐射峰值出现在凌晨 <span style={{ fontWeight: 'bold', color: '#D9534F' }}>4 点</span>，太阳去哪了？</Text>
+        <Text style={{ fontSize: 20, color: '#4A5568', lineHeight: 1.5 }}>顺着查发现：做天气分场景时 83% 的样本被判成「阴天」，明显反常。</Text>
+        <Box style={{ marginTop: 'auto', background: '#E8EFF8', borderRadius: 6, padding: '10px 14px', flexDirection: 'column', gap: 2 }}>
+          <Text style={{ fontSize: 19, color: '#1E4FA8' }}>统一加 8 小时后峰值回到正午 12 点</Text>
+          <Text style={{ fontSize: 17, color: '#8B97A8' }}>若不改，日变化曲线全部错位 8 小时</Text>
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, flexDirection: 'column', background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '20px 20px 16px 20px', gap: 10 }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Box style={{ width: 34, height: 34, background: '#D9534F', borderRadius: 4, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>2</Text>
+          </Box>
+          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#1A2230' }}>序列里有天数级断点</Text>
+        </Box>
+        <Text style={{ fontSize: 20, color: '#4A5568', lineHeight: 1.5 }}>十站共 <span style={{ fontWeight: 'bold', color: '#D9534F' }}>130</span> 处不是 15 分钟间隔，最大跳过 6 天。</Text>
+        <Text style={{ fontSize: 20, color: '#4A5568', lineHeight: 1.5 }}>直接 shift(1) 取「上一刻」，实际取到的是数天前同一时刻的值。</Text>
+        <Box style={{ marginTop: 'auto', background: '#E8EFF8', borderRadius: 6, padding: '10px 14px', flexDirection: 'column', gap: 2 }}>
+          <Text style={{ fontSize: 19, color: '#1E4FA8' }}>滞后特征按真实间隔置 NaN 再剔除</Text>
+          <Text style={{ fontSize: 17, color: '#8B97A8' }}>不能用 pandas 默认的 shift</Text>
+        </Box>
+      </Box>
+      <Box style={{ flex: 1, flexDirection: 'column', background: '#F0F5FC', border: '1px solid #D6DCE5', borderRadius: 8, padding: '20px 20px 16px 20px', gap: 10 }}>
+        <Box style={{ flexDirection: 'row', alignItems: 'center', gap: 12 }}>
+          <Box style={{ width: 34, height: 34, background: '#D9534F', borderRadius: 4, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 20, fontWeight: 'bold', color: '#FFFFFF' }}>3</Text>
+          </Box>
+          <Text style={{ fontSize: 25, fontWeight: 'bold', color: '#1A2230' }}>存在疑似缺测的「平顶」段</Text>
+        </Box>
+        <Text style={{ fontSize: 20, color: '#4A5568', lineHeight: 1.5 }}>连续 8 点以上总辐射完全相等且大于 100，共 <span style={{ fontWeight: 'bold', color: '#D9534F' }}>171</span> 行。</Text>
+        <Text style={{ fontSize: 20, color: '#4A5568', lineHeight: 1.5 }}>站 01 在 2019-06-10 上午 10 点到 19 点，辐射恒为 837.8、功率恒为 14.03 MW。</Text>
+        <Box style={{ marginTop: 'auto', background: '#E8EFF8', borderRadius: 6, padding: '10px 14px', flexDirection: 'column', gap: 2 }}>
+          <Text style={{ fontSize: 19, color: '#1E4FA8' }}>画典型日曲线时只能排除，不删数据</Text>
+          <Text style={{ fontSize: 17, color: '#8B97A8' }}>否则图会画成方波</Text>
+        </Box>
+      </Box>
+    </Box>
+    <Box style={{ marginTop: 20, width: '100%', height: 84, background: '#0E3F8C', borderRadius: 6, padding: '14px 24px', flexDirection: 'column', justifyContent: 'center' }}>
+      <Text style={{ fontSize: 22, color: '#FFFFFF', lineHeight: 1.5 }}>
+        这三个坑都不是题目告诉我的，是跑出来的结果反常才倒查出来的 —— 报告里我把反常现象和排查过程原样写了进去。
+      </Text>
+    </Box>
+  </Box>
+  <Box style={{ position: 'absolute', right: 40, bottom: 24 }}>
+    <Text style={{ fontSize: 16, color: '#1E4FA8' }}>05 / 13</Text>
+  </Box>
+</Slide>
