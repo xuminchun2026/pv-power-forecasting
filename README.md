@@ -2,7 +2,7 @@
 
 > 西华大学电气 Club 学术组 2026 年招新 · 方向 A（光伏功率预测）
 > **作者：徐敏纯　学号：3120260807425　邮箱：1037899152@qq.com**
-> 代码仓库：<https://github.com/wb9s2dm677-hue/pv-power-forecasting>
+> 代码仓库：<https://github.com/xuminchun2026/pv-power-forecasting>
 > 答辩日期：2026-10-14（暂定）
 
 ---
@@ -43,7 +43,7 @@
 > DOI: 10.1016/j.solener.2021.09.050
 
 > 数据集：PVOD v1.0（V4）, Science Data Bank, DOI: 10.11922/sciencedb.01094
-> 仓库：<https://github.com/yaotc/PVODataset>（MIT 协议）
+> 仓库：<https://github.com/xuminchun2026/pv-power-forecasting>（MIT 协议）
 
 > ⚠️ **一处需要说明的出入**：任务参考资料里把该数据集论文标注为「Energy and AI, 2023」，
 > 但数据集官方仓库 README 的 Citation 小节给出的正式出处是 **Solar Energy, 2021, 230: 122-130**。
@@ -390,7 +390,7 @@ python code/25_three_learner_plot.py # 三 learner 收益对照（出 fig19_thre
 点 PyCharm 底部 **Terminal**（或菜单 View → Tool Windows → Terminal），三条命令：
 
 ```bash
-git remote add origin https://github.com/你的用户名/pv-power-forecasting.git
+git remote add origin https://github.com/xuminchun2026/pv-power-forecasting
 git branch -M main
 git push -u origin main
 ```
