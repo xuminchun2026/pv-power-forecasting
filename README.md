@@ -51,15 +51,21 @@
 
 ### 为什么最终只用 PVOD
 
-任务给出两个候选数据集，另一份为宁夏某光伏电站 2019 年数据。
-那份数据在预备实验中被查出两个难以处理的问题：
+任务指定的**首选**是 Kaggle 上印度两座光伏电站约 34 天的记录，**备选**是 PVOD。本报告用的是备选，
+理由有两层：
+
+1. Kaggle 那份需要注册账号才能下载；
+2. 它只有两座电站、约一个月，做不了"轮流把每一站当目标站"的留一站交叉验证——
+   而报告的第二个研究问题正是跨站迁移，十座电站才有十次独立验证的机会。
+
+此外，摸索阶段还接触过宁夏某光伏电站 2019 年的公开数据，它在预备实验中被查出两个难以处理的问题：
 
 1. 其**目标列与总辐射的比值几乎恒定**（变异系数仅 0.23%），近似是由辐射按固定系数换算得到的量，
    而非独立计量的电表读数；
 2. 其数据集页面**未公开经纬度与装机容量**，无法做容量归一化，也就无法与其他电站横向比较。
 
 PVOD 的目标列经检验为真实计量值（比值变异系数 19.40%~58.97%，平均 29.69%，与宁夏的 0.23% 相差约 130 倍），
-且附完整元信息，故全部实验改用 PVOD。这一取舍本身是一项检验结果，而非便利性选择。
+且附完整元信息，故全部实验在 PVOD 上完成。换数据这一步不是图省事，是被上面这些性质逼出来的。
 
 ## 4. 四个"设定"（本项目的方法设计核心）
 
@@ -155,7 +161,7 @@ PVOD 的目标列经检验为真实计量值（比值变异系数 19.40%~58.97%�
 
 > ⚠️ 以下两节为 **2026-10-03 修正时区与气象口径后重跑**的结果。
 > 早期版本（未做 UTC+8 换算、且用 nwp 预报口径）曾得出「LSTM 上 B 反超 D」的结论，
-> 该结论**已被推翻**，旧结果备份在 `结果备份_迁移实验nwp口径_1003/`。
+> 该结论**已被推翻**（旧结果仅保留在本地，未随本次交付，以免误导）。
 
 | 方案 | MAE | RMSE | 相对 A | 优于 A 的站数 |
 |---|---|---|---|---|
@@ -271,6 +277,7 @@ PVOD 的目标列经检验为真实计量值（比值变异系数 19.40%~58.97%�
 ```
 .
 ├── code/                         全部代码（每个脚本可独立运行）
+│   ├── 01~05                     早期探索脚本，**已弃用**，正式结果不由它们产出
 │   ├── 06_transfer_loso.py       跨站迁移（留一站交叉验证，LightGBM）
 │   ├── 07_loso_plot.py           跨站迁移出图
 │   ├── 08_lstm_transfer.py       LSTM 五方案对照
@@ -335,17 +342,19 @@ python code/24_xgb_transfer_loso.py  # XGBoost 版迁移复现（约 50 秒，�
 python code/25_three_learner_plot.py # 三 learner 收益对照（出 fig19_three_learner.png）
 ```
 
-## 8. 怎么把报告传到 Overleaf（不用装任何东西）
+## 8. 想再编译一次的话：传到 Overleaf（可选）
+
+根目录这份 `report.pdf` 已经是本机用 XeLaTeX 编好的正式版（29 页，0 error），**直接交即可**，
+本节只是给想自己再编译一遍的人留个步骤。
 
 1. 打开 <https://www.overleaf.com> 注册/登录（免费账号够用）。
-2. 点 **New Project → Upload Project**，上传 `overleaf_upload.zip`
-   （包里已含 `main.tex`、`refs.bib` 与 `figures/` 下 10 张图，目录结构正确）。
-3. 传完把**编译器改成 XeLaTeX**（菜单 → Compiler）。中文必须用这个，默认的 pdflatex 会报错。
-   > 新版界面入口：左下角小齿轮 ⚙，或顶部标题右边的小 ▾。
-4. 点 **Recompile**。若参考文献为空，再跑一次 BibTeX + 两次 XeLaTeX。
+2. **New Project → Upload Project**，上传 `Overleaf上传包_最终版.zip`
+   （扁平结构，顶层就是 `main.tex`、`refs.bib` 与 `figures/` 共 20 张图）。
+3. 传完把**编译器改成 XeLaTeX**（菜单 → Compiler）。中文必须用这个，默认的 pdfLaTeX 会报字体错。
+   > 新版界面入口：左下角小齿轮，或顶部标题右边的小箭头。
+4. 点 **Recompile**，成功后同样得到 29 页。
 
-⚠️ **务必走 zip 上传，不要解压后一个个手动传**——`figures/` 目录层级一丢，10 张图全部变红方框。
-⚠️ 弹窗里必须选 **Existing project**；选成 New project 会生成副本项目，编译器退回默认值。
+⚠️ 走 zip 上传就好，**不要**解压后一个个手动传——`figures/` 的目录层级一丢，19 张图全变成红方框。
 
 ## 9. 运行环境
 
@@ -358,77 +367,14 @@ python code/25_three_learner_plot.py # 三 learner 收益对照（出 fig19_thre
 - **数据引用（必写）**：见第 3 节。`refs.bib` 中 `@article{yao2021photovoltaic}` 与 `@dataset{pvod}` 两条，
   作者、期刊、卷页、DOI 均于 2026-10-03 从官方仓库 README 核对，非凭印象填写。
 - **方法文献**：Antonanzas 2016（综述）、Inman 2013、Sobri 2018、Yang 2021（随机森林）。
-  **DOI 请自己在出版商页面再确认一次**。
+  上述文献的 DOI 均已用 CrossRef / DataCite 逐条核验（其中 Breiman《Random Forests》的旧 DOI 经 doi.org 验证为 404，已更正）。
 
-## 11. 怎么把代码传上 GitHub（新手版）
-
-> 本机 git 已初始化好本地仓库，全程不需要装任何软件。
-
-### 第 1 步：注册 GitHub 账号
-
-1. 浏览器打开 <https://github.com> → 右上角 **Sign up**。
-   > ⚠️ 要用**自己电脑的浏览器**，不要用任何"内置预览面板"——那种面板跑不了网页脚本，
-   > 会白屏并显示 `Please enable JS and disable any ad blocker`，看着像断网其实是面板的问题。
-   > 判断方法：命令行 `curl -sS -o /dev/null -w "%{http_code}" https://github.com/` 返回 `200` 即网络正常。
-2. **用户名只能用英文字母、数字、短横线**，不能写中文，比如 `xuminchun2026`。记下来，后面都要用。
-3. 密码要 **12 个字符以上**。
-4. 注册完去邮箱**点激活链接**（邮箱 1037899152@qq.com）。
-5. ⚠️ 万一白屏或提示"请求太多次"，这是 GitHub 的**按 IP 限流**，不是电脑坏了：
-   立刻停止点击 → 等 30~60 分钟 → 或换网络出口（手机在 WiFi 与 4G/5G 间切换，等于换 IP）后**只点一次**。
-   本地仓库里的代码、图、结果一直在 `.git` 里存着，晚几天推不会丢。
-
-### 第 2 步：建一个空仓库
-
-1. 右上角 `+` → **New repository**。
-2. **Repository name** 填 `pv-power-forecasting`（只能小写字母、数字、短横线）。
-3. **Visibility 选 Public**（老师要能打开看）。
-4. ⚠️ **不要勾 "Initialize this repository with a README"**（本地已有 README，勾了会打架）。
-5. 点 **Create repository**。
-
-### 第 3 步：推上去
-
-点 PyCharm 底部 **Terminal**（或菜单 View → Tool Windows → Terminal），三条命令：
-
-```bash
-git remote add origin https://github.com/你的用户名/pv-power-forecasting.git
-git branch -M main
-git push -u origin main
-```
-
-⚠️ 第二条 `git branch -M main` 别漏——GitHub 默认分支叫 `main`，老版本 git 默认叫 `master`，名字对不上会失败。
-
-### 第 4 步：确认成功
-
-浏览器刷新仓库页面，能看到文件列表、提交数与作者名；**`data/` 不在里面，这是对的**。
-
-> 若报错 `support for password authentication was removed`，需要用令牌：
-> Settings → Developer settings → Personal access tokens → Tokens (classic) → Generate new token
-> → 勾选 `repo` → 复制生成的串，推送时"密码"栏粘贴它。
-
-### 以后改了代码怎么再推
-
-```bash
-git add .
-git commit -m "改了什么就写什么"
-git push
-```
-
-第 2 条 `-m` 后面必须写一句话说明改了什么——这是给未来的你看的。
-
-### 常见报错速查
-
-| 报错 | 原因 | 怎么办 |
-|---|---|---|
-| `src refspec main does not match any` | 忘了 `git branch -M main` | 补跑一次 |
-| `permission denied` / `removed` | 没登录或没给权限 | 用上面的令牌办法 |
-| `failed to push some refs` | 仓库里已有文件与本地冲突 | `git pull --rebase origin main` 后再 push |
-
-## 12. 交付清单
+## 11. 交付清单
 
 | 交付物 | 位置 | 说明 |
 |---|---|---|
-| **报告正文（LaTeX）** | `overleaf/main.tex` | 引擎 **XeLaTeX**，含 18 张插图、12 张表 |
-| Overleaf 上传包 | `overleaf_upload.zip` | 含 `main.tex`、`refs.bib`、`figures/` 18 张图 |
+| **报告正文（LaTeX）** | `overleaf/main.tex` | 引擎 **XeLaTeX**，29 页、含 19 张插图、13 张表 |
+| Overleaf 上传包 | `Overleaf上传包_最终版.zip` | 含 `main.tex`、`refs.bib`、`figures/`（20 张图） |
 | 结果汇总 | `results.md` | 指标表 + 两个研究问题的回答，题目要求的 `results.md` |
 | 可复现代码 | `code/06` ~ `code/25` + `pvod_common.py` | 每个脚本可独立运行 |
 | 早期探索脚本 | `code/01` ~ `code/05` | 用另一份候选数据集做的探索，**已弃用**，正式结果不由它们产出 |
